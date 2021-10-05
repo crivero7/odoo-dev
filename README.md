@@ -63,4 +63,4 @@ Into repository root ~\odoo-dev run the following command
 
 ```
 python .\src\odoo-bin -c odoo-dev.cfg
-``
+```
