@@ -22,7 +22,7 @@ chmod -x .dev-env
 Then, run .dev-env file
 
 ```
-.\.dev-env file
+./.dev-env 
 ```
 
 ## Environment variables
@@ -47,7 +47,7 @@ chmod -x .db-setup
 Then, run .db-setup file
 
 ```
-.\.db-setup file
+./.db-setup
 ```
 
 ## Virtual environment
