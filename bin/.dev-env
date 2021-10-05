@@ -1,0 +1,29 @@
+#!/bin/bash
+_OS=$OS
+_os="${_OS,,}"
+case $_os in
+
+  windows_nt)
+    # Making project layout
+    if ! [ -d ../filestore ]; then
+        mkdir ../filestore
+    fi
+    if ! [ -d ../logs ]; then
+        mkdir ../logs
+    fi
+    if ! [ -d ../src ]; then
+        mkdir ../src
+        # Cloning Odoo 14
+        git clone -b 14.0 --single-branch --depth 1 https://github.com/odoo/odoo.git ../src
+    fi
+    if ! [ -d ../envs ]; then
+        # Making development virtual environment
+        python -m venv ../env
+    fi
+    PYTHON=../env/Scripts/python
+    # Updating pip
+    $PYTHON -m pip install --upgrade pip
+    # Installing project dependencies
+    $PYTHON -m pip install -r ../requirements.txt
+    ;;
+esac

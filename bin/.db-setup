@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ -f ../.env ]; then
+    # Load Environment Variables
+    export $(cat ../.env | grep -v '#' | awk '/=/ {print $1}')
+fi
+
+PYTHON=../env/Scripts/python
+ODOO=../src/odoo-bin
+$PYTHON $ODOO -d $DB_NAME -i base --addons-path=../src/addons,../src/odoo/addons,../local/addons --db_user=$DB_USER --db_host=$DB_HOST --db_password=$DB_PASSWORD --save --config ../odoo-dev.cfg --stop-after-init
