@@ -5,5 +5,14 @@ if [ -f ../.env ]; then
 fi
 
 PYTHON=../env/Scripts/python
-ODOO=../src/odoo-bin
-$PYTHON $ODOO -d $DB_NAME -i base --addons-path=../src/addons,../src/odoo/addons,../local/addons --db_user=$DB_USER --db_host=$DB_HOST --db_password=$DB_PASSWORD --save --config ../odoo-dev.cfg --stop-after-init
+ODOO=../src/odoo/odoo-bin
+$PYTHON $ODOO -d $DB_NAME -i base \
+--addons-path=\
+../src//odoo/addons,\
+../src/odoo/odoo/addons,\
+../local/addons,\
+../src/partner-contact \
+--db_user=$DB_USER \
+--db_host=$DB_HOST \
+--db_password=$DB_PASSWORD \
+--save --config ../odoo-dev.cfg --stop-after-init

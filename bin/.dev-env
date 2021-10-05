@@ -4,19 +4,7 @@ _os="${_OS,,}"
 case $_os in
 
   windows_nt)
-    # Making project layout
-    if ! [ -d ../filestore ]; then
-        mkdir ../filestore
-    fi
-    if ! [ -d ../logs ]; then
-        mkdir ../logs
-    fi
-    if ! [ -d ../src ]; then
-        mkdir ../src
-        # Cloning Odoo 14
-        git clone -b 14.0 --single-branch --depth 1 https://github.com/odoo/odoo.git ../src
-    fi
-    if ! [ -d ../envs ]; then
+    if ! [ -d ../env ]; then
         # Making development virtual environment
         python -m venv ../env
     fi
@@ -25,5 +13,24 @@ case $_os in
     $PYTHON -m pip install --upgrade pip
     # Installing project dependencies
     $PYTHON -m pip install -r ../requirements.txt
+    # Making project layout
+    if ! [ -d ../filestore ]; then
+        mkdir ../filestore
+    fi
+    if ! [ -d ../logs ]; then
+        mkdir ../logs
+    fi
+    if ! [ -d ../src/odoo ]; then
+        mkdir ../src/odoo
+        # Cloning Odoo 14
+        git clone -b 14.0 --single-branch --depth 1 https://github.com/odoo/odoo.git ../src/odoo
+    fi
+    if ! [ -d ../src/partner-contact ]; then
+        mkdir ../src/partner-contact
+        # Cloning partner-contact 14
+        git clone https://github.com/OCA/partner-contact.git ../src/partner-contact
+        # Installing partner-contact dependencies
+        $PYTHON -m pip install -r ../src/partner-contact/requirements.txt
+    fi
     ;;
 esac
