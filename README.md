@@ -28,10 +28,12 @@ Then, run .dev-env file
 ## Environment variables
 Create .env file into repository root ~\odoo-dev
 
+```
 DB_USER=amim
 DB_HOST=127.0.0.1
 DB_PASSWORD=admin
 DB_NAME=AMIM
+```
 
 
 ## Database config
