@@ -62,5 +62,5 @@ Activate virtual environment on repository root ~\odoo-dev
 Into repository root ~\odoo-dev run the following command
 
 ```
-python .\src\odoo-bin -c odoo-dev.cfg
+python .\src\odoo\odoo-bin -c odoo-dev.cfg
 ```
